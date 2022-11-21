@@ -1,6 +1,6 @@
 breed [spiders spider]
 globals [ scale xmin xmax ]
-turtles-own [orbit]
+spiders-own [orbit]
 
 to setup
   ca
@@ -86,7 +86,7 @@ to place-new-spider
     let halt? false
     if mouse-inside? [
       if mouse-down? and mouse-xcor > xmin * scale and mouse-xcor < xmax * scale [
-        if not keep-old-spiders? and any? turtles [ ask turtles [die] ]
+        if not keep-old-spiders? and any? spiders [ ask spiders [die] ]
         create-spiders 1 [
           if color = 65 or color = 85 [set color 75]
           set size world-width / 33
@@ -113,7 +113,7 @@ end
 
 to iterate-web
   carefully [
-    ask turtles [
+    ask spiders [
       move-spider
       set orbit xcor / scale
       output-show orbit
@@ -125,8 +125,8 @@ end
 GRAPHICS-WINDOW
 207
 29
-644
-467
+645
+468
 -1
 -1
 86.0
