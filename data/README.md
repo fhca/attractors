@@ -1,5 +1,4 @@
 # attractors
-# attractors
-# attractors
-# attractors
-# attractors
+(spanish at bottom)
+
+The following are experimental 
