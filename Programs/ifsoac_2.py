@@ -224,17 +224,22 @@ def rossler_array3d(N=500000):
 
 
 ## INITS
+"""The data is "stored" in bins and each bin corresponds to a vertex in the nsides-side polygon.
+This func. makes sure that each bin has the same number of data points.
+In reality, the returned bins contain data indexes (bin index) having a uniform frequency and order 
+similar to that of the original data. If data length is not a multiple of nbins, extra data places are
+filled with 0."""
 def same_amount_bins(df, nbins=500):
     df = pd.DataFrame(df)
     lo = df.sort_values(0)  # sorted by values
     times = len(lo) / nbins  # number of times a bin label will be repeated
-    lo["bin"] = np.arange(nbins).repeat(times)  # add a bin label column
-    return lo.sort_index().bin.to_numpy()  # return labels with df order
+    s = pd.Series(np.arange(nbins).repeat(times))
+    return pd.Series(s, index=lo.index).fillna(0.).to_numpy()
 
 
 # detects if a path from the list exists and changes to it (for running inside Colaboratory)
 import sys, os
-for spec in ["/content/drive/MyDrive/Proyectos/INVESTIGACIÓN Y DESARROLLO/Capitulo Springer"]:
+for spec in ["/content/drive/MyDrive/Projects/my_path"]:
     if os.path.isdir(os.path.expanduser(spec)):
         os.chdir(spec)
         break
