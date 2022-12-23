@@ -55,6 +55,7 @@ class Ifsoac:
             m = np.max(serie) # to uniformly distribute series values along feat_range, we append m+epsilon to series,
             serie = np.append(serie, m+1e-10) # so it gets assigned "nsides" and then ...
             indices = scaler.fit_transform(serie.reshape(-1, 1)).flatten().astype(int)
+            indice = indices[indices>=0]  # patch for some flawed versions of preprocesing
             self.ifs.append(poligono[indices[:-1]]) # ... we discart it so it doesn't get out of bounds
 
     def jDC(self, serie=None):
