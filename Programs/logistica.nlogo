@@ -30,7 +30,7 @@ end
 ;;;; and add the corresponding name in the "equation" selector.
 
 to-report eq-line [x]
-  report R * x
+  report R * x + .2
 end
 
 to-report eq-parallels [x]
@@ -172,7 +172,7 @@ INPUTBOX
 163
 70
 R
-4.0
+3.5
 1
 0
 Number
@@ -290,7 +290,7 @@ SWITCH
 214
 keep-old-spiders?
 keep-old-spiders?
-0
+1
 1
 -1000
 
@@ -684,7 +684,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.2.1
+NetLogo 6.3.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
